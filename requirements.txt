@@ -1,0 +1,8 @@
+pandas 
+numpy 
+matplotlib 
+yfinance 
+scikit-learn 
+google-generativeai 
+pypdf2 
+python-dotenv
