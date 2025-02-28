@@ -46,6 +46,11 @@ python financial_analysis_agent.py --report_path path/to/annual_report.pdf --tic
 
 Optional arguments:
 - `--output`: Specify the output JSON file path (default: `analysis_report.json`)
+- `--skip_visuals`: Skip generating visualization charts (useful for headless environments)
+
+You can also set environment variables:
+- `SKIP_VISUALIZATIONS=true`: Alternative way to skip visualization generation
+- `GOOGLE_API_KEY`: Your Google API key for Gemini (can also be in .env file)
 
 ## Example Output
 
@@ -76,6 +81,27 @@ The script generates:
    - Combined analysis weighing both technical and fundamental factors
 6. **Visualization Creation**: Charts are generated to visualize the findings
 7. **Report Compilation**: All analysis is combined into a comprehensive report
+
+## Troubleshooting
+
+If you encounter 404 NOT_FOUND errors or other issues:
+
+1. **Stock Data Fetch Errors**: The script now includes robust error handling for stock data retrieval with multiple retry attempts and fallback to dummy data if needed.
+
+2. **PDF Processing Issues**: If the PDF cannot be processed, the script will create dummy financial data to allow analysis to continue.
+
+3. **Visualization Errors**: 
+   - Use `--skip_visuals` command line argument to bypass visualization generation
+   - Set environment variable `SKIP_VISUALIZATIONS=true`
+   - Check for matplotlib backend issues in your environment
+
+4. **API Key Issues**: 
+   - Ensure your Google API key is correctly set in the `.env` file or as an environment variable
+   - Verify the key has access to Gemini models
+
+5. **Deployment Environment**: 
+   - For serverless/cloud deployments, ensure all dependencies are correctly installed
+   - Consider setting all file paths as absolute rather than relative
 
 ## Requirements
 
